@@ -1,5 +1,0 @@
-{
-    "days" : ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"],
-    "months": ["januanry","february","march","april","may","june","july","august","september","october","november","december"],
-    "note_types": ["task","entry","journal","project","sprint","bank","alarm"]
-}

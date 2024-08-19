@@ -1,5 +1,7 @@
 import sys
 
+def check_terminal():
+    pass
 def check_dependencies():
     if getattr(sys, 'frozen', False):
         # The script is running in a bundle

@@ -1,14 +1,13 @@
-""""""
-from note import Note
-import yaml
 
+import yaml
+import json
 def write_to_save(note):
     pass
 def load_from_save():
     pass
 def encrypt_save():
     pass
-def append_yaml_file(note:Note):
+def append_yaml_file(note):
     """_summary_
 
     Args:
@@ -43,3 +42,15 @@ def get_config_data()->list:
     with open("config.yaml", 'r') as file:
         data = yaml.load(file, Loader=yaml.FullLoader)
     return data
+
+def load_json(file_path:str):
+    """returns file contents of a JSON-file 
+
+    Args:
+        file_path (str): string of the file path
+    Returns:
+        dict : file contents
+    """
+    with open(file_path,"r")as json_file:
+        file_content : dict = json.load(json_file)
+    return file_content

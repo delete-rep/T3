@@ -5,15 +5,11 @@ from rich.text import Text
 from file_handler import append_yaml_file,get_yaml_data
 from note import Note
 from rich.panel import Panel
-from globals import TIMESTAMPS,NOTE_TYPES
+from globals import TIMESTAMPS,NOTE_TYPES,SUGGESTIONS
 from rich.layout import Layout
 from rich.padding import Padding
 from rich.table import Table
-SUGGESTIONS= {
-"add" : "function: [grey]ADD[grey] \n this is a function used to add other note types",
-"delete ": "used to delete other notes and take a variety of notes"
 
-}
 
        
 class Core():
@@ -90,6 +86,7 @@ class Core():
     
             matching_words = [word for word in self.PRIMARY_KEY_WORD_MAPPING if word.startswith(self.input.list[-1])]
             if matching_words:
+        
                 if matching_words[0] in SUGGESTIONS:
                     self.suggestion = SUGGESTIONS[matching_words[0]]
 
@@ -99,10 +96,12 @@ class Core():
      
         for index ,i in enumerate(self.input.list):
             if i in self.PRIMARY_KEY_WORD_MAPPING:
-                self.input.list[index] = "[code ] "  + i.upper() + " [/code]"
+                self.input.list[index] = "[code ]"  + i.upper() + "[/code]"
+                
             if i in NOTE_TYPES:
                 self.input.list[index] = "[blue] "  + i + " [/blue]"
         self.formated_text = " ".join(self.input.list)
+        
 
     def process(self,layout : Layout = None ,user_input:str= ""):
 
